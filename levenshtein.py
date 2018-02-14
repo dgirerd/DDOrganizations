@@ -3,9 +3,10 @@ from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 import sys
 
-# Input is two strings. Spaces must be replaced by underscores.
-if len(sys.argv) < 3 or len(sys.argv) > 4 or len(sys.argv[-1]) < 3 or len(sys.argv[-2]) < 3:
-    raise ValueError("Invalid input to levenshtein.")
+# Input is two strings and returns value from 0 to 100
+def levenshtein(org1, org2):
+    if len(org1) < 3 or len(org2) < 3:
+        raise ValueError("Invalid input to levenshtein.")
 
-print(fuzz.ratio(sys.argv[-1].replace("_"," "), sys.argv[-2].replace("_"," ")))
+    return fuzz.ratio(org1, org2)
 
