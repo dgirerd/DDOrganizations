@@ -53,5 +53,5 @@ def compare(method, related_threshold_str, same_threshold_str, org1, org2):
     sys.exit()
 
 
-relatedness = compare(sys.argv[-5], sys.argv[-4], sys.argv[-3], sys.argv[-2], sys.argv[-1])
-print("Relatedness: "+str(relatedness))
+#relatedness = compare(sys.argv[-5], sys.argv[-4], sys.argv[-3], sys.argv[-2], sys.argv[-1])
+#print("Relatedness: "+str(relatedness))

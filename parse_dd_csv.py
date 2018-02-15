@@ -12,7 +12,7 @@ with open('orgs_orgconcepts.csv') as dd_csv:
                 # Check input values
                 if row[2][1:].isdigit():
                     # If valid input make string of org_name,concept_id and add to list
-                    to_write.append(str(row[0]+","+row[1]+","+row[2][1:]))
+                    to_write.append(str(row[0]+"|"+row[1]+"|"+row[2][1:]))
     #    print(to_write)
         # write to file
         with open("clean_orgs.csv",'w') as clean:
