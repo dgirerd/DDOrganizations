@@ -2,6 +2,7 @@ import csv
 
 # open csv file
 with open('orgs_orgconcepts.csv') as dd_csv:
+#with open('orgs_test_set.csv') as dd_csv:
         # read the file into an object. https://docs.python.org/3/library/csv.html
         orgs = csv.reader(dd_csv, delimiter=',')
         to_write = ["org_id,org_name,concept_id"]
@@ -15,5 +16,5 @@ with open('orgs_orgconcepts.csv') as dd_csv:
                     to_write.append(str(row[0]+"|"+row[1]+"|"+row[2][1:]))
     #    print(to_write)
         # write to file
-        with open("clean_orgs.csv",'w') as clean:
+        with open("test_set_small.csv",'w') as clean:
             clean.write('\n'.join(to_write))
