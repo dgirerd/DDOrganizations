@@ -5,8 +5,8 @@ import sys
 
 # Input is two strings and returns value from 0 to 100
 def levenshtein(org1, org2):
-    if len(org1) < 3 or len(org2) < 3:
-        raise ValueError("Invalid input to levenshtein.")
+    if len(org1) < 2 or len(org2) < 2:
+        raise ValueError("Invalid input to levenshtein: |"+org1+"|"+org2+"|")
 
     return fuzz.ratio(org1, org2)
 

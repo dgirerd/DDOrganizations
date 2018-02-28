@@ -22,8 +22,8 @@ def compare(method, related_threshold_str, same_threshold_str, org1, org2):
     same_threshold = float(same_threshold_str)
 
     # Check input parameters
-    if len(sys.argv) < 6:
-        print("Missing arguments. Should have method, related_threshold, same_threshold, org1, org2")
+    #if len(sys.argv) < 6:
+    #    print("Missing arguments. Should have method, related_threshold, same_threshold, org1, org2")
     if related_threshold < 0 or related_threshold > 1:
         print("Invalid argument. Related threshold must be between 0 and 1 inclusive.")
         sys.exit()
@@ -39,8 +39,8 @@ def compare(method, related_threshold_str, same_threshold_str, org1, org2):
 
     if method.lower() == "levenshtein":
         levenshtein_score = levenshtein(org1, org2)
-     #   print("Levenshtein score: "+str(levenshtein_score))
-        normalized_score = levenshtein_score * 0.01 # don't divide by 0
+ #       print("Levenshtein score: "+str(levenshtein_score))
+        normalized_score = levenshtein_score * 0.01
         if normalized_score > same_threshold:
             return 2
         elif normalized_score > related_threshold:
