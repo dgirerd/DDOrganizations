@@ -3,6 +3,8 @@
 
 import sys
 from levenshtein import levenshtein
+from soundex import soundex
+from nysiis import nysiis
 # TODO import other methods
 
 
@@ -37,7 +39,7 @@ def compare(method, related_threshold_str, same_threshold_str, org1, org2):
 
     if method.lower() == "levenshtein":
         levenshtein_score = levenshtein(org1, org2)
-        print("Levenshtein score: "+str(levenshtein_score))
+     #   print("Levenshtein score: "+str(levenshtein_score))
         normalized_score = levenshtein_score * 0.01 # don't divide by 0
         if normalized_score > same_threshold:
             return 2
@@ -46,6 +48,11 @@ def compare(method, related_threshold_str, same_threshold_str, org1, org2):
         else:
             return 0
 
+    if method.lower() == "soundex":
+        return soundex(org1, org2)
+
+    if method.lower() == "nysiis":
+        return nysiis(org1, org2)
     #TODO other methods
     
     
