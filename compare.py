@@ -3,8 +3,8 @@
 
 import sys
 from levenshtein import levenshtein
-from soundex import soundex
 from nysiis import nysiis
+from nlp import nlp
 # TODO import other methods
 
 
@@ -48,12 +48,13 @@ def compare(method, related_threshold_str, same_threshold_str, org1, org2):
         else:
             return 0
 
-    if method.lower() == "soundex":
-        return soundex(org1, org2)
 
     if method.lower() == "nysiis":
         return nysiis(org1, org2)
     #TODO other methods
+
+    if method.lower() == "nlp":
+        return nlp(org1, org2)
     
     
     print("Invalid argument. Method not found.")

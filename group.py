@@ -1,7 +1,9 @@
 # takes in a csv of orgs, calls compare with a certain method and evaluates accuracy
+# python3 group.py [method]
 
 import csv
 from compare import compare
+import sys
 
 class Org:
 
@@ -36,7 +38,7 @@ for org1 in orgs_list:
         if org1.oid == org2.oid:
             continue
         counter += 1
-        relatedness = compare('levenshtein', 0.8, 0.95, org1.name, org2.name)
+        relatedness = compare(sys.argv[-1], 0.8, 0.95, org1.name, org2.name)
         if org1.cid == org2.cid:
             if relatedness > 0:
                 correct += 1
