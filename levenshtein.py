@@ -10,3 +10,4 @@ def levenshtein(org1, org2):
 
     return fuzz.ratio(org1, org2)
 
+#print(levenshtein("Pacific Heights Chevron","Chevron Corp."))

@@ -28,25 +28,28 @@ with open('orgs_test_set.csv') as dd_csv:
         orgs_list.append(Org(row[0],row[1],row[2]))
 
 #print(str(orgs_list[0]))
-counter = 0
-correct = 0
-matched = 0
-not_matched = 0
-orgs_list2 = list(orgs_list)
-for org1 in orgs_list:
-    for org2 in orgs_list2:
-        if org1.oid == org2.oid:
-            continue
-        counter += 1
-        relatedness = compare(sys.argv[-1], 0.8, 0.95, org1.name, org2.name)
-        if org1.cid == org2.cid:
-            if relatedness > 0:
-                correct += 1
-                matched +=1
-            else:
-                not_matched += 1
-        if (relatedness == 0 and org1.cid != org2.cid):
-            correct += 1
+for x in range(0, 101):
+
+    counter = 0
+    correct = 0
+    matched = 0
+    not_matched = 0
+    orgs_list2 = list(orgs_list)
+    for org1 in orgs_list:
+        for org2 in orgs_list2:
+            if org1.oid == org2.oid:
+                continue
+            counter += 1
+            relatedness = compare(sys.argv[-1], x/100, org1.name, org2.name)
+            if org1.cid == org2.cid:
+                 if relatedness > 0:
+                    correct += 1
+                    matched +=1
+                 else:
+                    not_matched += 1
+            if (relatedness == 0 and org1.cid != org2.cid):
+                 correct += 1
+    print(str(x/100)+","+str(counter)+","+str(correct)+","+str(correct/counter)+","+str(matched+not_matched)+","+str(matched)+","+str(matched/(matched+not_matched)))
         
-print("Count: "+str(counter)+" Correct: "+str(correct)+" Percentage: "+str(correct/counter))
-print("Related: "+str(matched+not_matched)+" Correct: "+str(matched)+" Percentage: "+str(matched/(matched+not_matched)))
+#print("Count: "+str(counter)+" Correct: "+str(correct)+" Percentage: "+str(correct/counter))
+#print("Related: "+str(matched+not_matched)+" Correct: "+str(matched)+" Percentage: "+str(matched/(matched+not_matched)))
